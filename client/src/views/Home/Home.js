@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Home.css';
 import axios from 'axios';
+import deleteIcon from "./delete-icon.png";
 function Home() {
 
     const [notes, setNotes] = useState();
@@ -37,12 +38,27 @@ function Home() {
        else{
         alert(response?.data?.message);
        }
+       loadNotes();
 
     }
 
+
+       const  deleteNote = async (_id) => {
+        const  response = await axios.delete (`/api/v1/notes/${_id}`);
+
+        if (response?.data?.success) {
+            alert(response?.data?.message);
+
+            loadNotes();
+
+        }
+
+        
+
+       }
     useEffect(() => {
         loadNotes();
-    }, [])
+    }, [notes])
 
 
     return (
@@ -56,16 +72,18 @@ function Home() {
                     <div>
                         {
                             notes?.map((notes, index) => {
-                                const { title, description, priority } = notes;
+                                const { title, description, priority ,_id } = notes;
                                 return (
                                 
                                         <div className='notes-card'>
                                             <h3>{title}</h3>
                                             <hr />
+                                            <img src={ deleteIcon} alt='delete' className='delete-icon' onClick={() => {deleteNote (_id)}} />
                                             <p className='note-description'>{description}</p>
                                             <p className='note-priority'>{priority}</p>
+                                            
                                         </div>
-                                
+                               
                                 ) })
                         }
                     </div>

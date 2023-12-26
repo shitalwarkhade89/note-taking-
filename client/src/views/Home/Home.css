@@ -56,3 +56,10 @@
     margin-top: 90px;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 }
+.delete-icon{
+    height: 16px;
+    position: absolute;
+    margin-left:470px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
