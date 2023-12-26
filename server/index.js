@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import dotenv from 'dotenv';
 dotenv.config();
 import { getApiHealth } from './controllers/helth.js';
-
+import {postApiNote ,getApiNote} from './controllers/note.js';
 
 const app = express();
 app.use(express.json());
@@ -25,6 +25,13 @@ catch(err){
 // helth API
 app.get('/api/health',getApiHealth );
 
+// post API Note
+
+app.post('/api/v1/notes',postApiNote);
+
+// get API Notes
+
+app.get('/api/v1/notes',getApiNote);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
