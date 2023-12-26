@@ -1,26 +1,26 @@
-import { Schema , model } from "mongoose";
+import { Schema, model } from "mongoose";
 
-const noteSchema = new Schema ({
-    title:{
-        type:String,
+const noteSchema = new Schema({
+    title: {
+        type: String,
         required: true
-        },
-         description:{
-            type:String,
+    },
+    description: {
+        type: String,
         required: true
-         },
+    },
 
-    priority:{
-        type:String,
-        enum:['heigh','medium','low'],
+    priority: {
+        type: String,
+        enum: ['heigh', 'medium', 'low'],
         required: true
     }
 
 }
-,{
-    timestamps: true 
- })
+    , {
+        timestamps: true
+    })
 
- const Note = model('Note',noteSchema);
+const Note = model('Note', noteSchema);
 
- export default Note
+export default Note
