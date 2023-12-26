@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import dotenv from 'dotenv';
 dotenv.config();
 import { getApiHealth } from './controllers/helth.js';
-import {postApiNote ,getApiNote, updateNote, noteDelete} from './controllers/note.js';
+import {postApiNote ,getApiNote, updateNote, noteDelete,getNoteById} from './controllers/note.js';
 
 const app = express();
 app.use(express.json());
@@ -40,6 +40,9 @@ app.put('/api/v1/notes/:id', updateNote);
 // app.delete('/api/v1/notes',deleteNote);
 
 app.delete('/api/v1/notes/:id', noteDelete)
+
+// get Note By Id
+ app.get('/api/v1/notes/:id',getNoteById)
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

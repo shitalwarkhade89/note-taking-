@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Home.css';
 import axios from 'axios';
 import deleteIcon from "./delete-icon.png";
+import editIcon from "./edit-icon.png";
 function Home() {
 
     const [notes, setNotes] = useState();
@@ -77,8 +78,11 @@ function Home() {
                                 
                                         <div className='notes-card'>
                                             <h3>{title}</h3>
+                                            <a href='/edit'><img src = {editIcon} alt ='edit' className='edit-icon' /></a>
+                                            <br/>
                                             <hr />
                                             <img src={ deleteIcon} alt='delete' className='delete-icon' onClick={() => {deleteNote (_id)}} />
+                                            
                                             <p className='note-description'>{description}</p>
                                             <p className='note-priority'>{priority}</p>
                                             

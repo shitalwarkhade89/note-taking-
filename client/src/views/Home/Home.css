@@ -47,6 +47,7 @@
     border-radius: 15px;
     display: block;
     margin: 15px auto;
+    cursor: pointer;
 
 
 }
@@ -61,5 +62,12 @@
     position: absolute;
     margin-left:470px;
     margin-bottom: 10px;
+    cursor: pointer;
+}
+.edit-icon{
+    height: 16px;
+    position: absolute;
+    margin-left:470px;
+  
     cursor: pointer;
 }

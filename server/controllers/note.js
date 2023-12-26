@@ -44,6 +44,20 @@ const getApiNote = async (req, res) => {
     }
 }
 
+// Get Note by Id
+const getNoteById = async (req, res) => {
+const {id} = req.params;
+
+const getNoteById = await Note.findById({_id:id})
+
+res.json({
+    success :true,
+    data:getNoteById,
+    message:"get Note Successfully"
+
+})
+
+}
 // Update Note API
 const updateNote = async (req, res) => {
     const { id } = req.params;
@@ -116,4 +130,4 @@ const noteDelete = async (req, res) => {
 
 
 
-export { postApiNote, getApiNote, updateNote, noteDelete };
+export { postApiNote, getApiNote, updateNote, noteDelete,getNoteById};
