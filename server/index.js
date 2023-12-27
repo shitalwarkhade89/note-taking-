@@ -5,6 +5,9 @@ dotenv.config();
 import { getApiHealth } from './controllers/helth.js';
 import {postApiNote ,getApiNote, updateNote, noteDelete,getNoteById} from './controllers/note.js';
 
+import path from 'path';
+const __dirname = path.resolve();
+
 const app = express();
 app.use(express.json());
 
@@ -43,6 +46,16 @@ app.delete('/api/v1/notes/:id', noteDelete)
 
 // get Note By Id
  app.get('/api/v1/notes/:id',getNoteById)
+
+
+ if (process.env.NODE_ENV === 'production') {
+   app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
+ 
+   app.get('*', (req, res) => {
+     res.sendFile(path.join(__dirname, '..', 'client', 'build', 'index.html'))
+   });
+ }
+
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
