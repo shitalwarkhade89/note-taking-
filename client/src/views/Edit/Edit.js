@@ -27,7 +27,8 @@ function Edit() {
 
     useEffect(() => {
         fetchNote();
-    });
+    
+    },[]);
 
     const updateNote = async (_id) => {
        
