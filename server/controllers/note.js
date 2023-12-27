@@ -47,8 +47,8 @@ const getApiNote = async (req, res) => {
 // Get Note by Id
 const getNoteById = async (req, res) => {
 const {id} = req.params;
-
-const getNoteById = await Note.findById({_id:id})
+try{
+    const getNoteById = await Note.findById({_id:id})
 
 res.json({
     success :true,
@@ -56,6 +56,14 @@ res.json({
     message:"get Note Successfully"
 
 })
+
+}
+catch(err){
+    res.json({
+        success:false,
+        message:err.message
+    })
+}
 
 }
 // Update Note API

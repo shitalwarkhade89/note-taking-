@@ -12,7 +12,7 @@ const noteSchema = new Schema({
 
     priority: {
         type: String,
-        enum: ['heigh', 'medium', 'low'],
+        enum: ['high', 'medium', 'low'],
         required: true
     }
 

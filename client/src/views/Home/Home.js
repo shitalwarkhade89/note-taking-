@@ -16,7 +16,7 @@ function Home() {
         try {
             const response = await axios.get('/api/v1/notes');
             setNotes(response?.data?.data);
-            console.log(response?.data?.data);
+            // console.log(response?.data?.data);
         }
         catch (err) {
             console.log(err);
@@ -31,15 +31,15 @@ function Home() {
         description:description
         
        })
-       console. log (response?.data?.data)
+       console.log(response?.data?.data)
 
-       if(response?.data?. success){
+       if(response?.data?.success){
      alert(response?.data?.message);
        }
        else{
         alert(response?.data?.message);
        }
-       loadNotes();
+     
 
     }
 
@@ -54,12 +54,14 @@ function Home() {
 
         }
 
-        
-
        }
+
+        const editnote = (_id) => {
+            window.location.href =`/edit/${_id}`
+        }
     useEffect(() => {
         loadNotes();
-    }, [notes])
+    }, [])
 
 
     return (
@@ -78,7 +80,7 @@ function Home() {
                                 
                                         <div className='notes-card'>
                                             <h3>{title}</h3>
-                                            <a href='/edit'><img src = {editIcon} alt ='edit' className='edit-icon' /></a>
+                                            <img src = {editIcon} alt ='edit' className='edit-icon'  onClick={() => {editnote (_id)}}/>
                                             <br/>
                                             <hr />
                                             <img src={ deleteIcon} alt='delete' className='delete-icon' onClick={() => {deleteNote (_id)}} />

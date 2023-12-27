@@ -6,13 +6,13 @@ import Edit from "./views/Edit/Edit.js"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-const router =createBrowserRouter([
+const router = createBrowserRouter([
     {
         path:'/',
         element:<Home/>
     },
     {
-        path:"/edit",
+        path:"/edit/:_id",
         element:<Edit/>
     },
     
